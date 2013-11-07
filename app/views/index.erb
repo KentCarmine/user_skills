@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>User Skills and Levels</h1>
+
+  <%unless current_user.nil?%>
+    <a href="/users/<%=session[:user_id]%>/edit">Edit Your Skills</a>
+    <br><br>
+  <%end%>
+
+  <%# TODO: display the skills and proficiency levels for each user ... %>
+  <%@users.each do |user|%>
+    User Name: <%=user.name%>
+    <br>
+
+    <%user_skills = user.users_skills%>
+    <%user_skills.each do |user_skill|%>
+      <%skill = Skill.where("id = ?", user_skill.skill_id).first%>
+      <%if user_skill.formally_educated%>
+        <%educated = "Formally educated"%>
+      <%else%>
+        <%educated = "Not formally educated"%>
+      <%end%>
+      <%skill_str = "#{skill.name}: #{user_skill.years_experience} Years of Experience. #{educated}"%>
+      Skill and Proficiency: <%=skill_str%>
+      <br>
+    <%end%>
+
+
+
+    <br>
+  <%end%>
+</div>

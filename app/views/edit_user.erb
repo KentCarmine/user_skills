@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Edit your skillset</h1>
+  <form action="/users/<%=@user.id%>/edit" method="POST">
+    <select name="skill_name">
+      <%@skills.each do |skill|%>
+      <option value="<%=skill.name%>"><%=skill.name%></option>
+      <%end%>
+    </select>
+    Years of Experience<input type = "text" name="years_experience" placeholder="Years of Experience">
+    <input type="checkbox" name="formally_educated" checked="true">Formally Educated?<br>
+    <input type="submit" value="Add Skill">
+  </form>
+
+</div>
